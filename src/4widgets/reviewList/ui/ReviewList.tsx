@@ -2,17 +2,16 @@
 import clsx from "clsx";
 import { use } from "react";
 
-import { ReviewCard } from "@/2entities/review";
-import { Review } from "@/2entities/review/model/review.type";
+import { Review, ReviewCard } from "@/2entities/review";
 
 import style from "./ReviewList.module.css";
 
-interface ReviewCardProps {
+interface ReviewListProps {
   reviewsPromise: Promise<Review[]>;
   className?: string;
 }
 
-export default function ReviewList(props: ReviewCardProps) {
+export function ReviewList(props: ReviewListProps) {
   const allReviews = use(props.reviewsPromise);
 
   return (

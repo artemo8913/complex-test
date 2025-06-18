@@ -24,6 +24,7 @@ body {
   color: var(--text-primary-color);
   background: var(--background-primary-color);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: var(--text-size-m);
 }
 
 * {

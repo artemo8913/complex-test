@@ -8,7 +8,6 @@
   .ReviewList {
     gap: 32px;
     height: 468px;
-    display: grid;
     justify-items: center;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 250px);
