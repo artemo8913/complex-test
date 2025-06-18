@@ -1,0 +1,13 @@
+.ProductList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 1023px) {
+  .ProductList {
+    flex-flow: row wrap;
+  }
+}
