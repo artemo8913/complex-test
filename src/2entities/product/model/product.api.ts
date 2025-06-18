@@ -3,7 +3,7 @@ import { createURLSearchParams, SearchParams } from "@/1shared/api/searchParams"
 
 import { Product } from "./product.type";
 
-interface GetReviewsResponse {
+export interface GetProductsResponse {
   page: number;
   amount: number;
   total: number;
@@ -16,10 +16,15 @@ export class ProductApi {
 
     return fetch(`${API_PRODUCTS}?${params}`)
       .then((response) => response.json())
-      .then((result: GetReviewsResponse) => result)
+      .then((result: GetProductsResponse) => result)
       .catch((e) => {
         console.log(e);
-        return [];
+        return {
+          page: 1,
+          amount: 0,
+          total: 0,
+          items: [],
+        };
       });
   }
 }

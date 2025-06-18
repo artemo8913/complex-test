@@ -1,3 +1,2 @@
-import { ProductApi } from "./model/product.api";
-
-export { ProductApi };
+export { ProductApi } from "./model/product.api";
+export type { GetProductsResponse } from "./model/product.api";
