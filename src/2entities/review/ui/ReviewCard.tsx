@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Review } from "../model/review.type";
+import { Review } from "@/2entities/review";
 
 import style from "./ReviewCard.module.css";
 

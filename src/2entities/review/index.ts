@@ -1,3 +1,3 @@
-import { ReviewCard } from "./ui/ReviewCard";
-import { ReviewApi } from "./model/review.api";
-export { ReviewApi, ReviewCard };
+export { ReviewCard } from "./ui/ReviewCard";
+export { ReviewApi } from "./model/review.api";
+export type { Review } from "./model/review.type";
