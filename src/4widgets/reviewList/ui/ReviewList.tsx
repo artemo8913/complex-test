@@ -1,11 +1,11 @@
 "use client";
 import clsx from "clsx";
+import { use } from "react";
 
 import { ReviewCard } from "@/2entities/review";
 import { Review } from "@/2entities/review/model/review.type";
 
 import style from "./ReviewList.module.css";
-import { use } from "react";
 
 interface ReviewCardProps {
   reviewsPromise: Promise<Review[]>;
