@@ -1,0 +1,38 @@
+:root {
+  --background-primary-color: #222;
+  --background-secondary-color: #777;
+  --background-card-color: #d9d9d9;
+
+  --text-primary-color: #000;
+  --text-secondary-color: #fff;
+
+  --text-size-m: 24px;
+  --text-size-l: 36px;
+  --text-size-xl: 40px;
+  --text-size-xxl: 96px;
+
+  --border-radius-l: 16px;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text-primary-color);
+  background: var(--background-primary-color);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
