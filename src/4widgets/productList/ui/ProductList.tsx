@@ -1,12 +1,13 @@
 "use client";
 import clsx from "clsx";
-import { use, useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { use, useCallback, useState } from "react";
 
 import { GetProductsResponse, ProductApi } from "@/2entities/product";
 import { ProductCard } from "@/2entities/product/ui/ProductCard";
 
 import style from "./ProductList.module.css";
 import { PRODUCT_LIMIT_DEFAULT } from "../model/params.const";
+import { useInfinityScroll } from "@/1shared/hooks/useInfinityScroll";
 
 interface ProductListProps {
   initialProductsPromise: Promise<GetProductsResponse>;
@@ -15,9 +16,8 @@ interface ProductListProps {
 
 export function ProductList(props: ProductListProps) {
   const initial = use(props.initialProductsPromise);
-  const [productItems, setProductItems] = useState(initial.items);
 
-  const [isLoading, startLoad] = useTransition();
+  const [productItems, setProductItems] = useState(initial.items);
 
   const isCanLoadMore = useCallback(() => productItems.length < initial.total, [productItems.length, initial.total]);
 
@@ -25,8 +25,6 @@ export function ProductList(props: ProductListProps) {
     () => Math.ceil(productItems.length / PRODUCT_LIMIT_DEFAULT),
     [productItems.length]
   );
-
-  const observerElem = useRef(null);
 
   const loadMoreProducts = useCallback(async () => {
     if (!isCanLoadMore()) {
@@ -41,34 +39,7 @@ export function ProductList(props: ProductListProps) {
     setProductItems((products) => [...products, ...productResponse.items]);
   }, [getCurrentPage, isCanLoadMore]);
 
-  const handleObserver: IntersectionObserverCallback = useCallback(
-    (entries) => {
-      const [target] = entries;
-
-      if (target.isIntersecting && isCanLoadMore() && !isLoading) {
-        startLoad(loadMoreProducts);
-      }
-    },
-    [isCanLoadMore, isLoading, loadMoreProducts]
-  );
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.IntersectionObserver) {
-      return;
-    }
-    const element = observerElem.current;
-    const option = { threshold: 0 };
-
-    const observer = new IntersectionObserver(handleObserver, option);
-    if (element) {
-      observer.observe(element);
-    }
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [handleObserver]);
+  const { isLoading, observerElem } = useInfinityScroll(loadMoreProducts);
 
   return (
     <div>
@@ -78,7 +49,7 @@ export function ProductList(props: ProductListProps) {
         ))}
       </div>
       <div className={style.listLoader} ref={observerElem}>
-        {isLoading ? "Загрузка продуктов..." : ""}
+        {isLoading && isCanLoadMore() ? "Загрузка продуктов..." : "Товаров больше нет :("}
       </div>
     </div>
   );
