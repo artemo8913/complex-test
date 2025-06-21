@@ -1,0 +1,5 @@
+.Notification {
+  padding: 26px;
+  border-radius: var(--border-radius-l, 16px);
+  background-color: var(--background-card-color, #d9d9d9);
+}
