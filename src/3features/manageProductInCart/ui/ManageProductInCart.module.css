@@ -1,0 +1,8 @@
+.ManageProductInCart {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  text-align: center;
+}
