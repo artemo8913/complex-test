@@ -1,0 +1,12 @@
+.Button {
+  height: 68px;
+  padding: 12px;
+  border-radius: 15px;
+  font-size: var(--text-size-l);
+  color: var(--text-input-color);
+  background-color: var(--background-primary-color, #222);
+}
+
+.Button:disabled {
+  opacity: 0.3;
+}
