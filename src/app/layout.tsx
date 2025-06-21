@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import NotificationContainer from "@/1shared/notification/NotificationContainer";
 import { CartProvider } from "@/2entities/cart";
+import { UserProvider } from "@/2entities/user";
 
 import "./globals.css";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${inter.variable}`}>
         <NotificationContainer />
-        <CartProvider>{children}</CartProvider>
+        <UserProvider>
+          <CartProvider>{children}</CartProvider>
+        </UserProvider>
       </body>
     </html>
   );

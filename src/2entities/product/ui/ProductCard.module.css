@@ -12,6 +12,7 @@
 .image {
   border-radius: var(--border-radius-l, 16px);
   height: 366px;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1023px) {

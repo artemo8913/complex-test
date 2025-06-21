@@ -1,10 +1,11 @@
 "use client";
 import clsx from "clsx";
-import { FormEvent, useCallback, useState, useTransition } from "react";
+import { FormEvent, useCallback, useTransition } from "react";
 
 import { Button } from "@/1shared/ui/Button";
 import { PhoneInput } from "@/1shared/ui/PhoneInput";
 import { OrderApi, useCart } from "@/2entities/cart";
+import { useUser, useUserDisptach } from "@/2entities/user";
 
 import { CartListItem } from "./CartListItem";
 
@@ -18,9 +19,16 @@ interface CartProps {
 export function Cart(props: CartProps) {
   const cart = useCart();
   const items = Object.entries(cart);
+
+  const { phone } = useUser();
+  const userDispatch = useUserDisptach();
+
   const [isLoading, startOrder] = useTransition();
 
-  const [phone, setPhone] = useState("");
+  const updatePhone = useCallback(
+    (newPhone: string) => userDispatch({ type: "updatePhone", phone: newPhone }),
+    [userDispatch]
+  );
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -48,7 +56,7 @@ export function Cart(props: CartProps) {
             <CartListItem key={productId} cartItem={cartItem} />
           ))}
         </ul>
-        <PhoneInput isRequired value={phone} handleChange={setPhone} />
+        <PhoneInput isRequired value={phone} handleChange={updatePhone} />
       </div>
       <Button isDisabled={isLoading} type="submit" className={style.makeOrderButton} onClick={() => {}}>
         заказать

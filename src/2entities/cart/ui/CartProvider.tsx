@@ -26,6 +26,8 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }, []);
 
+  useEffect(() => localStorage.setItem(LOCAL_STORAGE_CART_KEY, JSON.stringify(cart)), [cart]);
+
   return (
     <CartContext value={cart}>
       <CartDispatchContext value={dispatch}>{props.children}</CartDispatchContext>
