@@ -1,0 +1,38 @@
+.Cart {
+  gap: 16px;
+  padding: 8px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  border-radius: var(--border-radius-l, 16px);
+  background-color: var(--background-card-color, #d9d9d9);
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 32px;
+}
+
+.title {
+  font-size: var(--text-size-l);
+}
+
+.makeOrderButton {
+  align-self: flex-end;
+}
+
+.CartListItem {
+  display: flex;
+  flex-direction: row;
+}
+
+.itemName {
+  min-width: 50%;
+}
+.itemQuantity {
+  min-width: 25%;
+}
+.itemPrice {
+  min-width: 25%;
+}
