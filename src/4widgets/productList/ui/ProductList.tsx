@@ -2,12 +2,13 @@
 import clsx from "clsx";
 import { use, useCallback, useState } from "react";
 
+import { useInfinityScroll } from "@/1shared/hooks/useInfinityScroll";
 import { GetProductsResponse, ProductApi } from "@/2entities/product";
 import { ProductCard } from "@/2entities/product/ui/ProductCard";
+import { ManageProductInCart } from "@/3features/manageProductInCart";
 
 import style from "./ProductList.module.css";
 import { PRODUCT_LIMIT_DEFAULT } from "../model/params.const";
-import { useInfinityScroll } from "@/1shared/hooks/useInfinityScroll";
 
 interface ProductListProps {
   initialProductsPromise: Promise<GetProductsResponse>;
@@ -45,11 +46,11 @@ export function ProductList(props: ProductListProps) {
     <div>
       <div className={clsx(style.ProductList, props.className)}>
         {productItems.map((product) => (
-          <ProductCard key={product.id} product={product} control={<div>Кнопки управления</div>} />
+          <ProductCard key={product.id} product={product} control={<ManageProductInCart product={product} />} />
         ))}
       </div>
       <div className={style.listLoader} ref={observerElem}>
-        {isLoading && isCanLoadMore() ? "Загрузка продуктов..." : "Товаров больше нет :("}
+        {isLoading && isCanLoadMore() && "Загрузка продуктов..."}
       </div>
     </div>
   );

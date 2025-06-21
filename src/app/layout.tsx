@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
+import NotificationContainer from "@/1shared/notification/NotificationContainer";
+import { CartProvider } from "@/2entities/cart";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -19,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable}`}>{children}</body>
+      <body className={`${inter.variable}`}>
+        <NotificationContainer />
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }

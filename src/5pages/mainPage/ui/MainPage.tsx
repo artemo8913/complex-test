@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import { ReviewApi } from "@/2entities/review";
 import { ProductApi } from "@/2entities/product";
+import { Cart } from "@/4widgets/cart";
 import { ReviewList } from "@/4widgets/reviewList";
 import { PRODUCT_LIMIT_DEFAULT, PRODUCT_PAGE_DEFAULT, ProductList } from "@/4widgets/productList";
 
@@ -21,6 +22,7 @@ export default async function MainPage() {
         <Suspense fallback={<div>Загрузка отзывов</div>}>
           <ReviewList reviewsPromise={reviewsPromise} />
         </Suspense>
+        <Cart className={styles.cart} />
         <Suspense fallback={<div>Загрузка товаров</div>}>
           <ProductList initialProductsPromise={initialProductsPromise} />
         </Suspense>
