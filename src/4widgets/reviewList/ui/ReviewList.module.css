@@ -1,15 +1,13 @@
 .ReviewList {
-  display: grid;
+  display: flex;
   gap: 16px;
-  grid-auto-flow: row;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 @media (min-width: 1023px) {
   .ReviewList {
     gap: 32px;
-    height: 468px;
-    justify-items: center;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 250px);
   }
 }

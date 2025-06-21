@@ -1,6 +1,6 @@
 .ProductList {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 16px;
@@ -9,10 +9,4 @@
 .listLoader {
   color: white;
   text-align: center;
-}
-
-@media (min-width: 1023px) {
-  .ProductList {
-    flex-flow: row wrap;
-  }
 }

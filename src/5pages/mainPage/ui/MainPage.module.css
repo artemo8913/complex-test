@@ -21,6 +21,10 @@
   background: var(--background-secondary-color, #777);
 }
 
+.cart {
+  align-self: center;
+}
+
 @media (min-width: 1023px) {
   .page {
     padding: 50px 250px;
